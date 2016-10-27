@@ -6,6 +6,10 @@ ssl:
   cert_file: /var/vcap/jobs/dea_next/config/certs/server.crt
 <% end %>
 
+bind_mounts:
+ - src_path: /var/vcap/store/tango
+   mode: rw
+
 nats_servers:
 <% p("nats.machines").each do |address| %>
   - nats://<%= p("nats.user") %>:<%= p("nats.password") %>@<%= address %>:<%= p("nats.port") %>
